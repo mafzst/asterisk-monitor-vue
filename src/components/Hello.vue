@@ -7,7 +7,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Asterisk Monitor'
+      msg: this.$asterisk.test()
     }
   }
 }
