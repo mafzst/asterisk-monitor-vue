@@ -3,9 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Asterisk from './plugins/AsteriskPlugin'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import Vuetify from 'vuetify'
+import('vuetify/dist/vuetify.min.css')
 
-Vue.use(Asterisk, {host: '192.168.1.11', port: 5038, username: 'hello', password: 'world'})
+Vue.use(VueAxios, axios)
+Vue.use(Vuetify)
 
 /* eslint-disable no-new */
 new Vue({

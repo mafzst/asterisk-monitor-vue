@@ -1,14 +1,16 @@
 <template>
-  <p>{{msg}}</p>
+  <PeerList />
 </template>
 
 <script>
+import Toolbar from './Toolbar'
+import PeerList from './PeerList'
+
 export default {
   name: 'hello',
-  data () {
-    return {
-      msg: this.$asterisk.test()
-    }
+  components: {
+    Toolbar,
+    PeerList
   }
 }
 </script>

@@ -1,22 +1,43 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+<div id="app">
+  <v-app id="inspire">
+    <v-app id="example-1" toolbar footer>
+      <v-navigation-drawer persistent v-model="drawer" light enable-resize-watcher absolute>
+        <v-list dense>
+          <v-list-tile @click="">
+            <v-list-tile-action>
+              <v-icon>home</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Home</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+      <v-toolbar class="indigo" dark fixed>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title>Toolbar</v-toolbar-title>
+      </v-toolbar>
+      <main>
+        <v-container grid-list-md text-xs-center>
+          <router-view></router-view>
+        </v-container>
+      </main>
+      <v-footer class="indigo">
+        <span class="white--text">&copy; 2017</span>
+      </v-footer>
+    </v-app>
+  </v-app>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      drawer: true
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
