@@ -11,6 +11,11 @@ import('vuetify/dist/vuetify.min.css')
 Vue.use(VueAxios, axios)
 Vue.use(Vuetify)
 
+// TODO: Better config mgmt
+window.config = {
+  api_base: '/api'
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

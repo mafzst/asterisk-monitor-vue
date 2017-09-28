@@ -1,6 +1,6 @@
 <template>
   <v-flex xs4>
-    <v-card dark class="primary">
+    <v-card dark :class="peer.ipport !== '0' ? 'green' : 'red'" @click="call(peer)">
       <v-card-text class="px-0">{{peer.objectname}}</v-card-text>
     </v-card>
   </v-flex>
@@ -12,12 +12,18 @@ export default {
   props: ['peer'],
   data () {
     return {
-      showMore: false
+
     }
   },
   methods: {
-    toggle () {
-      this.showMore = !this.showMore
+    call (peer) {
+      this.$http.post(window.config.api_base + '/asterisk/originate', {
+        Channel: 'SIP/' + peer.objectname,
+        Context: 'home',
+        Exten: 11,
+        Priority: 1,
+        CallerId: 'Auto dial'
+      })
     }
   }
 }

@@ -1,7 +1,10 @@
 <template>
-<v-layout row wrap>
-  <Peer v-for="(peer, index) in peers" :peer="peer" :key="index"/>
-</v-layout>
+<div>
+  <h4>Liste des postes</h4>
+  <v-layout row wrap>
+    <Peer v-for="(peer, index) in peers" :peer="peer" :key="index" />
+  </v-layout>
+</div>
 </template>
 
 <script>
@@ -18,7 +21,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('http://localhost:5000/api/asterisk/sippeers').then(response => {
+    this.$http.get(window.config.api_base + '/asterisk/sippeers').then(response => {
       this.peers = response.data.response
     })
   }
