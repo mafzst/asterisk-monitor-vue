@@ -13,7 +13,7 @@ import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 
 Vue.use(VueAxios, axios)
 Vue.use(Vuetify)
-Vue.use(VueSocketio, process.env.API_BASE || 'http://localhost:5000')
+Vue.use(VueSocketio, process.env.API_BASE || 'https://asterisk-monitor.herokuapp.com')
 Vue.use(CxltToastr, {
   position: 'top right',
   showDuration: 5000
@@ -21,7 +21,7 @@ Vue.use(CxltToastr, {
 
 // TODO: Better config mgmt
 window.config = {
-  api_base: (process.env.API_BASE || 'http://localhost:5000') + '/api'
+  api_base: (process.env.API_BASE || 'https://asterisk-monitor.herokuapp.com') + '/api'
 }
 
 /* eslint-disable no-new */
