@@ -15,15 +15,29 @@ export default {
   components: {
     Peer
   },
+  sockets: {
+    PeerStatus (data) {
+      this.$toast.success({
+        title: 'Peer status changed',
+        message: data.peer.split('/')[1] + ' is now ' + data.peerstatus
+      })
+      this.fetchPeers()
+    }
+  },
   data () {
     return {
       peers: []
     }
   },
+  methods: {
+    fetchPeers () {
+      this.$http.get(window.config.api_base + '/asterisk/sippeers').then(response => {
+        this.peers = response.data.response
+      })
+    }
+  },
   mounted () {
-    this.$http.get(window.config.api_base + '/asterisk/sippeers').then(response => {
-      this.peers = response.data.response
-    })
+    this.fetchPeers()
   }
 }
 </script>
